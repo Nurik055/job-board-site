@@ -1,22 +1,15 @@
-function Pagination({totalPages, currentPage, setCurrentPage}) {
+function Pagination({ totalPages, currentPage, setCurrentPage }) {
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const pages = Array.from( {length: totalPages}, (_, i) => i+1);
-
-
-  return(
+  return (
     <div>
-    {pages.map((page) =>(
-      <button 
-      key={page},
-      onClick={() => setCurrentPage(page)}
-      >
-        {page}
-      </button>
-    ))}
+      {pages.map((page) => (
+        <button key={page} onClick={() => setCurrentPage(page)}>
+          {page}
+        </button>
+      ))}
     </div>
-  )
-
+  );
 }
-
 
 export default Pagination;
