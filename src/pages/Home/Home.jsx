@@ -14,21 +14,28 @@ function Home() {
 
   const [jobs, setJobs] = useState([]);
 
-    useEffect(() => {
-      fetch("https://remotive.com/api/remote-jobs")
-        .then((res) => res.json())
-        .then((data) => {
-          const formatted = data.jobs.map((job) => ({
-            id: job.id,
-            title: job.title,
-            company: job.company_name,
-            location: job.candidate_required_location,
-            url: job.url,
-          }));
+  const [jobs, setJobs] = useState([]);
 
-          setJobs(formatted);
-        });
-    }, []);
+  useEffect(() => {
+    fetch("https://remotive.com/api/remote-jobs")
+      .then((res) => res.json())
+
+      .then((data) => {
+        const formatted = data.jobs.map((job) => ({
+          id: job.id,
+
+          title: job.title,
+
+          company: job.company_name,
+
+          location: job.candidate_required_location,
+
+          url: job.url,
+        }));
+
+        setJobs(formatted);
+      });
+  }, []);
 
   const { user } = useContext(AuthContext);
 
