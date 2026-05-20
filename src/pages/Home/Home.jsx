@@ -5,6 +5,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "../../../styles/global.css";
+import BigCard from "../../components/BigCard/BigCard";
 
 function Home() {
   const [sortBy, setSortBy] = useState("");
@@ -14,28 +15,32 @@ function Home() {
 
   const [jobs, setJobs] = useState([]);
 
-  const [jobs, setJobs] = useState([]);
+useEffect(() => {
+  fetch("https://remotive.com/api/remote-jobs")
+    .then((res) => res.json())
 
-  useEffect(() => {
-    fetch("https://remotive.com/api/remote-jobs")
-      .then((res) => res.json())
+    .then((data) => {
+      const formatted = data.jobs.map((job) => ({
+        id: job.id,
 
-      .then((data) => {
-        const formatted = data.jobs.map((job) => ({
-          id: job.id,
+        title: job.title,
 
-          title: job.title,
+        company: job.company_name,
 
-          company: job.company_name,
+        location: job.candidate_required_location,
 
-          location: job.candidate_required_location,
+        url: job.url,
 
-          url: job.url,
-        }));
+        description: job.description,
 
-        setJobs(formatted);
-      });
-  }, []);
+        salary: job.salary,
+
+        tags: job.tags,
+      }));
+
+      setJobs(formatted);
+    });
+}, []);
 
   const { user } = useContext(AuthContext);
 
@@ -81,16 +86,23 @@ function Home() {
   const jobPerPage = result.slice(start, end);
   const totalPages = Math.ceil(result.length / perPage);
 
+  {
+    /* big job card */
+  }
+
+  const [selectedJob, setSelectedJob] = useState(null);
+
   return (
     <div>
       <SearchBar setSearch={setSearch}></SearchBar>
       <Filter setSortBy={setSortBy} setFilter={setFilter}></Filter>
-      <JobList jobs={jobPerPage}></JobList>
+      <JobList jobs={jobPerPage} setSelectedJob={setSelectedJob}></JobList>
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         totalPages={totalPages}
       ></Pagination>
+      {selectedJob && <BigCard selectedJob={selectedJob} />}
     </div>
   );
 }

@@ -1,16 +1,15 @@
-import JobCard from "../JobCard/JobCard"
+import JobCard from "../JobCard/JobCard";
 
-import "../../../styles/global.css"
+import "../../../styles/global.css";
 
-function JobList({ jobs }) {
-    return(
-        <div>
-            {jobs.map(job=> (
-                <JobCard key={job.id} job={job} />
-            ))}
-            
-        </div>
-    )
+function JobList({ jobs, setSelectedJob }) {
+  return (
+    <div>
+      {jobs.map((job) => (
+        <JobCard key={job.id} job={job} setSelectedJob={setSelectedJob} />
+      ))}
+    </div>
+  );
 }
 
-export default JobList
+export default JobList;
