@@ -1,4 +1,8 @@
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
+
 function BigCard({ selectedJob }) {
+  const { saveJob, applyToJob } = useContext(AuthContext);
   return (
     <div
       style={{
@@ -15,12 +19,14 @@ function BigCard({ selectedJob }) {
       }}
     >
       <h1>{selectedJob.title}</h1>
-      <h3>{selectedJob.company}</h3>
-      <p>{selectedJob.location}</p>
-      <p>{selectedJob.salary}</p>
-      <p>{selectedJob.tags.join(", ")}</p>
-      <p>{selectedJob.description}</p>
-      <p>{selectedJob.url}</p>
+      <h3>Company: {selectedJob.company}</h3>
+      <p>Location: {selectedJob.location}</p>
+      <p>Salary: {selectedJob.salary}</p>
+      <p>Tags: {selectedJob.tags?.join(", ")}</p>
+      <p>URL:{selectedJob.url}</p>
+      <button onClick={() => saveJob(selectedJob.id)}>Save</button>
+      <button onClick={() => applyToJob(selectedJob.id)}>Apply</button>{" "}
+      <div dangerouslySetInnerHTML={{ __html: selectedJob.description }} />
     </div>
   );
 }

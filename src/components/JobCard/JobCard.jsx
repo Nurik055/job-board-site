@@ -8,11 +8,26 @@ function JobCard({ job, setSelectedJob }) {
   return (
     <div className="jobCard" onClick={() => setSelectedJob(job)}>
       <h1>{job.title}</h1>
+      <h2>{job.salary}</h2>
       <h3>{job.company}</h3>
       <p>{job.location}</p>
       <p>{job.url}</p>
-      <button onClick={() => saveJob(job.id)}>Save</button>
-      <button onClick={() => applyToJob(job.id)}>Apply</button>{" "}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          saveJob(job.id);
+        }}
+      >
+        Save
+      </button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          applyToJob(job.id);
+        }}
+      >
+        Apply
+      </button>
       {/* clicks butts when setSelectedJob */}
     </div>
   );
