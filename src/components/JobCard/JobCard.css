@@ -24,6 +24,12 @@
   margin: 4px 0;
 }
 
+.pCompany,
+.pLocation {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* THIS is the key */
+}
 
 .pURL {
     color: #6B7280;
