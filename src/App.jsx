@@ -13,6 +13,8 @@ import Profile from "./pages/Profile/Profile";
 
 function App() {
   const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   
 
   useEffect(() => {
@@ -20,35 +22,48 @@ function App() {
       .then((res) => res.json())
 
       .then((data) => {
-        const formatted = data.jobs.map((job) => ({
-          id: job.id,
+        const formatted = data.jobs.map((job) => {
+          const parts = (job.salary || "").split("-");
+          const min = parts[0] || "";
+          const max = parts[1] || "";
+          const clearedMin = min.replace("$", "").replace("k", "");
+          const clearedMax = max.replace("$", "").replace("k", "");
+          const convertedMin = parseInt(clearedMin) || 0;
+          const convertedMax = parseInt(clearedMax) || 0;
 
-          title: job.title,
+          return {
+            id: job.id,
 
-          company: job.company_name,
+            title: job.title,
 
-          location: job.candidate_required_location,
+            company: job.company_name,
 
-          url: job.url,
+            location: job.candidate_required_location,
 
-          description: job.description,
+            url: job.url,
 
-          salary: job.salary = parsedIn,
-          
-          tags: job.tags,
-        }));
+            description: job.description,
+
+            salaryRaw: job.salary,
+
+            salaryMin: convertedMin,
+
+            salaryMax: convertedMax,
+
+            tags: job.tags,
+
+            
+          };
+        });
 
         setJobs(formatted);
+        setLoading(false);
+        })
+        .catch(() => {
+        setError("Failed to load jobs");
+        setLoading(false);
       });
   }, []);
-
-  let a = salary.split("-")[0];
-  let b = salary.split("-")[1];
-  const parts = [a,b];
-  const replaced = salary.replace("$","").replace("k", "");
-  const parsedIn = replaced.parseInt("a", "b");
-
-
 
   return (
     <BrowserRouter>
@@ -56,7 +71,12 @@ function App() {
         <ToastContainer /> {/* the notes and windows */}
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home jobs={jobs}></Home>}></Route>
+            <Route
+              index
+              element={
+                <Home jobs={jobs} loading={loading} error={error}></Home>
+              }
+            ></Route>
             <Route path="login" element={<Login />} />
             <Route
               path="profile"

@@ -1,0 +1,58 @@
+.jobCard {
+    background-color: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.h1Title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.h2Salary {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+
+.pCompany, .pLocation {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 4px 0;
+}
+
+
+.pURL {
+    color: #6B7280;
+    font-size: 15px;
+    margin: 4px 0;
+}
+
+.buttonSave {
+  background: white;
+  border: 1px solid #E5E7EB;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.buttonApply {
+  background: #2563EB;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.buttonApply:hover {
+  background: #1d4ed8;
+}
+
+.buttonSave:hover {
+  background: #f9fafb;
+}

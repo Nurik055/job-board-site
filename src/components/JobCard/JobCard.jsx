@@ -1,18 +1,22 @@
-import "../../../styles/global.css";
+import "../../components/JobCard/JobCard.css";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
+import { MapPin, Briefcase } from "lucide-react";
 
 function JobCard({ job, setSelectedJob }) {
   const { saveJob, applyToJob } = useContext(AuthContext);
 
   return (
     <div className="jobCard" onClick={() => setSelectedJob(job)}>
-      <h1>{job.title}</h1>
-      <h2>{job.salary}</h2>
-      <h3>{job.company}</h3>
-      <p>{job.location}</p>
-      <p>{job.url}</p>
+      <h1 className="h1Title">{job.title}</h1>
+      <h2 className="h2Salary">{job.salaryRaw}</h2>
+      <p className="pCompany"><Briefcase size={16} ></Briefcase>{job.company}</p>
+      <p className="pLocation"><MapPin size={16}></MapPin>{job.location}</p>
+      <p className="pURL">{job.url}</p>
+      
+      
       <button
+        className="buttonSave"
         onClick={(e) => {
           e.stopPropagation();
           saveJob(job.id);
@@ -21,6 +25,7 @@ function JobCard({ job, setSelectedJob }) {
         Save
       </button>
       <button
+        className="buttonApply"
         onClick={(e) => {
           e.stopPropagation();
           applyToJob(job.id);
@@ -28,9 +33,10 @@ function JobCard({ job, setSelectedJob }) {
       >
         Apply
       </button>
-      {/* clicks butts when setSelectedJob */}
+      
     </div>
   );
+  
 }
 
 export default JobCard;

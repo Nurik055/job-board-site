@@ -7,26 +7,36 @@ import { AuthContext } from "../../context/AuthContext";
 import "../../../styles/global.css";
 import BigCard from "../../components/BigCard/BigCard";
 
-function Home({jobs}) {
+function Home({ jobs, loading, error }) {
   const [sortBy, setSortBy] = useState("");
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
-
   const { user } = useContext(AuthContext);
-
   let result = [...jobs];
+  {
+    /* pagination */
+  }
+  const perPage = 5;
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+  const jobPerPage = result.slice(start, end);
+  const totalPages = Math.ceil(result.length / perPage);
+  {
+    /* big job card */
+  }
+
+  const [selectedJob, setSelectedJob] = useState(null);
 
   {
     /* sorting */
   }
 
   if (sortBy === "payingLowToHigh") {
-    result.sort((a, b) => a.salary - b.salary);
+    result.sort((a, b) => a.salaryMin - b.salaryMin);
   }
   if (sortBy === "payingHighToLow") {
-    result.sort((a, b) => b.salary - a.salary);
+    result.sort((a, b) => b.salaryMax - a.salaryMax);
   }
 
   {
@@ -47,28 +57,29 @@ function Home({jobs}) {
   result = result.filter((job) =>
     job.title.toLowerCase().includes(search.toLowerCase()),
   );
-
-  {
-    /* pagination */
+  if (result.length === 0) {
+    return <p>no jobs found</p>;
   }
 
-  const perPage = 5;
-  const start = (currentPage - 1) * perPage;
-  const end = start + perPage;
-  const jobPerPage = result.slice(start, end);
-  const totalPages = Math.ceil(result.length / perPage);
-
   {
-    /* big job card */
+    /* loading */
   }
 
-  const [selectedJob, setSelectedJob] = useState(null);
+  if (loading) {
+    return <p>Loading jobs...</p>;
+  }
 
-
-
+  {
+    /* error */
+  }
+  if (error) {
+    {
+      error;
+    }
+  }
 
   return (
-    <div>
+    <div className="container">
       <SearchBar setSearch={setSearch}></SearchBar>
       <Filter setSortBy={setSortBy} setFilter={setFilter}></Filter>
       <JobList jobs={jobPerPage} setSelectedJob={setSelectedJob}></JobList>
