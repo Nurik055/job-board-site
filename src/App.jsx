@@ -23,6 +23,7 @@ function App() {
 
       .then((data) => {
         const formatted = data.jobs.map((job) => {
+          
           const parts = (job.salary || "").split("-");
           const min = parts[0] || "";
           const max = parts[1] || "";
@@ -51,6 +52,8 @@ function App() {
             salaryMax: convertedMax,
 
             tags: job.tags,
+
+            logo: job.company_logo,
 
             
           };

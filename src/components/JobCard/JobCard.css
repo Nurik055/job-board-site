@@ -2,8 +2,16 @@
     background-color: #fff;
     border: 1px solid #E5E7EB;
     border-radius: 8px;
-    padding: 12px;
+    padding: 18px;
+    margin: 12px;
 }
+
+.jobLogo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain; 
+}
+
 
 .h1Title {
   font-size: 18px;
@@ -28,7 +36,7 @@
 .pLocation {
   display: flex;
   align-items: center;
-  gap: 6px; /* THIS is the key */
+  gap: 6px; 
 }
 
 .pURL {

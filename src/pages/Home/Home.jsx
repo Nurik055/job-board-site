@@ -88,7 +88,10 @@ function Home({ jobs, loading, error }) {
         setCurrentPage={setCurrentPage}
         totalPages={totalPages}
       ></Pagination>
-      {selectedJob && <BigCard selectedJob={selectedJob} />}
+      {selectedJob && (
+        <BigCard selectedJob={selectedJob} setSelectedJob={setSelectedJob} />
+      )}
+      {/* if selected job exists */}
     </div>
   );
 }

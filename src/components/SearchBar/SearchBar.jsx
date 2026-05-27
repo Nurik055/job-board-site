@@ -1,10 +1,16 @@
-function SearchBar({setSearch}) {
-    
-    return(
-        
-        <div>
-            <input onChange={(e)=>setSearch(e.target.value)} placeholder="Search" />
-        </div>
-    )
+import "../SearchBar/SearchBar.css";
+import { Search } from "lucide-react";
+
+function SearchBar({ setSearch }) {
+  return (
+    <div className="searchContainer">
+      <Search size={16} />
+      <input
+        className="searchInput"
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search"
+      />
+    </div>
+  );
 }
-export default SearchBar
+export default SearchBar;

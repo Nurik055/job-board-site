@@ -1,7 +1,7 @@
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 
-function BigCard({ selectedJob }) {
+function BigCard({ selectedJob, setSelectedJob }) {
   const { saveJob, applyToJob } = useContext(AuthContext);
   return (
     <div
@@ -18,6 +18,7 @@ function BigCard({ selectedJob }) {
         zIndex: 1000,
       }}
     >
+      <button onClick={()=> setSelectedJob(null)}>Close</button>
       <h1>{selectedJob.title}</h1>
       <h3>Company: {selectedJob.company}</h3>
       <p>Location: {selectedJob.location}</p>
@@ -27,6 +28,7 @@ function BigCard({ selectedJob }) {
       <button onClick={() => saveJob(selectedJob.id)}>Save</button>
       <button onClick={() => applyToJob(selectedJob.id)}>Apply</button>{" "}
       <div dangerouslySetInnerHTML={{ __html: selectedJob.description }} />
+      
     </div>
   );
 }
