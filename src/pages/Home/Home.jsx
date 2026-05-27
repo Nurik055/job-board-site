@@ -14,14 +14,7 @@ function Home({ jobs, loading, error }) {
   const [currentPage, setCurrentPage] = useState(1);
   const { user } = useContext(AuthContext);
   let result = [...jobs];
-  {
-    /* pagination */
-  }
-  const perPage = 5;
-  const start = (currentPage - 1) * perPage;
-  const end = start + perPage;
-  const jobPerPage = result.slice(start, end);
-  const totalPages = Math.ceil(result.length / perPage);
+
   {
     /* big job card */
   }
@@ -73,10 +66,17 @@ function Home({ jobs, loading, error }) {
     /* error */
   }
   if (error) {
-    {
-      error;
-    }
+    return <p>{error}</p>;
   }
+
+  {
+    /* pagination */
+  }
+  const perPage = 5;
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+  const jobPerPage = result.slice(start, end);
+  const totalPages = Math.ceil(result.length / perPage);
 
   return (
     <div className="container">
