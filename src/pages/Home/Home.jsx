@@ -2,7 +2,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Filter from "../../components/Filter/Filter";
 import JobList from "../../components/JobList/JobList";
 import Pagination from "../../components/Pagination/Pagination";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "../../../styles/global.css";
 import BigCard from "../../components/BigCard/BigCard";
@@ -50,9 +50,10 @@ function Home({ jobs, loading, error }) {
   result = result.filter((job) =>
     job.title.toLowerCase().includes(search.toLowerCase()),
   );
-  if (result.length === 0) {
-    return <p>no jobs found</p>;
-  }
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, filter, sortBy]);
 
   {
     /* loading */
@@ -82,12 +83,18 @@ function Home({ jobs, loading, error }) {
     <div className="container">
       <SearchBar setSearch={setSearch}></SearchBar>
       <Filter setSortBy={setSortBy} setFilter={setFilter}></Filter>
-      <JobList jobs={jobPerPage} setSelectedJob={setSelectedJob}></JobList>
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-      ></Pagination>
+      {result.length === 0 ? (
+        <p>no jobs found</p>
+      ) : (
+        <JobList jobs={jobPerPage} setSelectedJob={setSelectedJob} />
+      )}
+      {result.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+        />
+      )}
       {selectedJob && (
         <BigCard selectedJob={selectedJob} setSelectedJob={setSelectedJob} />
       )}
