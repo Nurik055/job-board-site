@@ -1,0 +1,64 @@
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: white;
+    height: 80px;
+    padding: 15px;
+    border: 2px solid #E5E7EB;
+    border-radius: 5px;   
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.selectPrice {
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    border: 2px solid #E5E7EB;
+    border-radius: 5px;
+    font-size: 15px;
+     transition: all 0.2s ease;
+    cursor: pointer;
+}
+.selectPrice:hover {
+    border-color: #9CA3AF;
+}
+
+.selectPrice:focus {
+    outline: none;
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.filtering {
+    display: flex;
+    gap: 10px;
+}
+
+.filteringButton {
+    padding: 10px 15px;
+    height: 50px;
+    border: 2px solid #E5E7EB;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+
+
+}   
+.filteringButton:hover {
+    border-color: #9CA3AF;
+    background-color: #F9FAFB;
+    transform: translateY(-1px);
+}
+.filteringButton:active {
+    transform: translateY(0px);
+    border-color: #2563EB;
+    background-color: #EFF6FF;
+    color: #2563EB;
+}

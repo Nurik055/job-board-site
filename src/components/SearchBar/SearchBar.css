@@ -1,6 +1,8 @@
 .searchContainer {
     position: relative;
-    width: 500px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .searchInput {

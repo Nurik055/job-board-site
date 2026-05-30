@@ -83,6 +83,7 @@ function Home({ jobs, loading, error }) {
     <div className="container">
       <SearchBar setSearch={setSearch}></SearchBar>
       <Filter setSortBy={setSortBy} setFilter={setFilter}></Filter>
+      <p className="homeP">{jobs.length} jobs available</p>
       {result.length === 0 ? (
         <p>no jobs found</p>
       ) : (
