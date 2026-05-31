@@ -33,6 +33,7 @@ function App() {
           const convertedMax = parseInt(clearedMax) || 0;
 
           return {
+            
             id: job.id,
 
             title: job.title,
@@ -53,12 +54,17 @@ function App() {
 
             tags: job.tags,
 
+            jobType: job.job_type,
+
             logo: job.company_logo,
 
             
           };
+          
         });
+        
 
+        
         setJobs(formatted);
         setLoading(false);
         })

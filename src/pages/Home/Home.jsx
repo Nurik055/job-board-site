@@ -11,6 +11,7 @@ function Home({ jobs, loading, error }) {
   const [sortBy, setSortBy] = useState("");
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
+  const [jobType, setJobType] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const { user } = useContext(AuthContext);
   let result = [...jobs];
@@ -41,6 +42,13 @@ function Home({ jobs, loading, error }) {
   }
   if (filter === "applied" && user) {
     result = result.filter((job) => user.appliedJobs.includes(job.id));
+  }
+
+  {
+    /* job type filter */
+  }
+  if (jobType !== "all") {
+    result = result.filter((job) => job.jobType === jobType);
   }
 
   {
@@ -82,7 +90,11 @@ function Home({ jobs, loading, error }) {
   return (
     <div className="container">
       <SearchBar setSearch={setSearch}></SearchBar>
-      <Filter setSortBy={setSortBy} setFilter={setFilter}></Filter>
+      <Filter
+        setSortBy={setSortBy}
+        setFilter={setFilter}
+        setJobType={setJobType}
+      ></Filter>
       <p className="homeP">{jobs.length} jobs available</p>
       {result.length === 0 ? (
         <p>no jobs found</p>
