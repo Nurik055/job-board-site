@@ -1,33 +1,21 @@
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
+import "../BigCard/BigCard.css"
 
 function BigCard({ selectedJob, setSelectedJob }) {
   const { saveJob, applyToJob } = useContext(AuthContext);
   return (
-    <div
-      style={{
-        position: "fixed",
-        right: 0,
-        top: 0,
-        width: "400px",
-        height: "100vh",
-        background: "white",
-        overflow: "auto",
-        borderLeft: "1px solid #ccc",
-        padding: 20,
-        zIndex: 1000,
-      }}
-    >
-      <button onClick={()=> setSelectedJob(null)}>Close</button>
-      <h1>{selectedJob.title}</h1>
-      <h3>Company: {selectedJob.company}</h3>
-      <p>Location: {selectedJob.location}</p>
-      <p>Salary: {selectedJob.salary}</p>
-      <p>Tags: {selectedJob.tags?.join(", ")}</p>
-      <p>URL:{selectedJob.url}</p>
-      <button onClick={() => saveJob(selectedJob.id)}>Save</button>
-      <button onClick={() => applyToJob(selectedJob.id)}>Apply</button>{" "}
-      <div dangerouslySetInnerHTML={{ __html: selectedJob.description }} />
+    <div className="bigContainer">
+      <button className="bigJobClose" onClick={()=> setSelectedJob(null)}>x</button>
+      <h1 className="bigTitle">{selectedJob.title}</h1>
+      <h3 className="bigCompany">Company: {selectedJob.company}</h3>
+      <p className="bigLocation">Location: {selectedJob.location}</p>
+      <p className="bigSalary">Salary: {selectedJob.salary}</p>
+      <p className="bigTags">Tags: {selectedJob.tags?.join(", ")}</p>
+      <p className="bigUrl">URL:{selectedJob.url}</p>
+      <button className="bigSaveBtn" onClick={() => saveJob(selectedJob.id)}>Save</button>
+      <button className="bigApplyBtn" onClick={() => applyToJob(selectedJob.id)}>Apply</button>{" "}
+      <div className="bigDescription" dangerouslySetInnerHTML={{ __html: selectedJob.description }} />
       
     </div>
   );

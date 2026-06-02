@@ -13,6 +13,7 @@ function Home({ jobs, loading, error }) {
   const [search, setSearch] = useState("");
   const [jobType, setJobType] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+
   const { user } = useContext(AuthContext);
   let result = [...jobs];
 
@@ -21,6 +22,18 @@ function Home({ jobs, loading, error }) {
   }
 
   const [selectedJob, setSelectedJob] = useState(null);
+
+  useEffect(() => {
+    if (selectedJob) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedJob]);
 
   {
     /* sorting */

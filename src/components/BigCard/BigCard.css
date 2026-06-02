@@ -1,0 +1,35 @@
+.bigContainer {
+    
+    
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%); /* like moves element back by 50%, tho only after it is positionend*/
+    width: 100%;
+    max-width: 1250px;
+    border-radius: 8px ;
+    padding:  50px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border: 1px solid #E5E7EB;
+    flex-direction: column;
+}
+.bigJobClose {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background-color: #F3F4F6;
+    color: #374151;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.bigJobClose:hover {
+    background-color: #EF4444;
+    color: white;
+}
