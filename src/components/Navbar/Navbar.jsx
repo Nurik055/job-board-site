@@ -11,15 +11,15 @@ function Navbar() {
   return (
     <div className="navbar">
       <nav>
-        <h3>JobBoard Navbar</h3>
+        <h1 className="navbarH1">JobBoard</h1>
         {user ? (
-          <button onClick={logout}>Logout</button>
+          <button className="logoutBtn" onClick={logout}>Logout</button>
         ) : (
-          <button onClick={() => navigate("/login")}>Login</button>
+          <button className="loginBtn" onClick={() => navigate("/login")}>Login</button>
         )}
         {/* condition ? valueIfTrue : valueIfFalse */}
       </nav>
-      <Link to="/profile">Profile</Link>
+      <Link className="profileLink" to="/profile">Profile</Link>
     </div>
   );
 }

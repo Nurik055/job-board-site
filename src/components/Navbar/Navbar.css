@@ -1,5 +1,59 @@
 .navbar {
-  background-color: pink;
-  width: auto;
+  background-color: white;
+  border-bottom: 1px solid #E5E7EB;
+  padding: 16px 32px;
 }
 
+.navbar nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarH1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.profileLink {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+  color: #2563EB;
+  font-weight: 500;
+}
+
+.profileLink:hover {
+  text-decoration: underline;
+}
+
+.loginBtn,
+.logoutBtn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.loginBtn {
+  background-color: #2563EB;
+  color: white;
+}
+
+.loginBtn:hover {
+  background-color: #1D4ED8;
+}
+
+.logoutBtn {
+  background-color: #EF4444;
+  color: white;
+}
+
+.logoutBtn:hover {
+  background-color: #DC2626;
+}
