@@ -23,18 +23,7 @@ function Home({ jobs, loading, error }) {
 
   const [selectedJob, setSelectedJob] = useState(null);
 
-  useEffect(() => {
-    if (selectedJob) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [selectedJob]);
-
+  
   {
     /* sorting */
   }

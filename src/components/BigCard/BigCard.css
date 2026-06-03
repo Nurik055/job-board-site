@@ -1,6 +1,4 @@
 .bigContainer {
-    
-    
     position: fixed;
     top: 50px;
     left: 50%;
@@ -13,6 +11,9 @@
     background-color: #fff;
     border: 1px solid #E5E7EB;
     flex-direction: column;
+    display: flex;
+    overflow: auto;
+    max-height: calc(100vh - 100px);
 }
 .bigJobClose {
     position: absolute;
@@ -32,4 +33,69 @@
 .bigJobClose:hover {
     background-color: #EF4444;
     color: white;
+}
+.bigTitle {
+    font-size: 30px;
+  font-weight: 600;
+  color: #111827;
+}
+
+
+.bigCompany, .bigLocation {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 4px 0;
+}
+
+.bigCompany,
+.bigLocation {
+  display: flex;
+  align-items: center;
+  gap: 6px; 
+}
+.bigSalary {
+    font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+.bigTags {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 8px 0;
+}
+.bigUrl {
+color: #6B7280;
+    font-size: 15px;
+    margin: 4px 0;
+}
+.bigSaveBtn {
+background: white;
+  border: 1px solid #E5E7EB;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+.bigApplyBtn {
+background: #2563EB;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+.bigApplyBtn:hover {
+  background: #1d4ed8;
+}
+
+.bigSaveBtn:hover {
+  background: #f9fafb;
+}
+.bigDescription {
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #374151;
+  border-top: 1px solid #E5E7EB;
+  padding-top: 20px;
 }
