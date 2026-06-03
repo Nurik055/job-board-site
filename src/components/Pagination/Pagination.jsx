@@ -1,10 +1,12 @@
+import "../Pagination/Pagination.css"
+
 function Pagination({ totalPages, currentPage, setCurrentPage }) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div>
+    <div className="paginationContainer">
       {pages.map((page) => (
-        <button key={page} onClick={() => setCurrentPage(page)}>
+        <button className="paginationBtn" key={page} onClick={() => setCurrentPage(page)}>
           {page}
         </button>
       ))}
