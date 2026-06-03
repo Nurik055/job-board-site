@@ -1,0 +1,43 @@
+.profileContainer {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 32px;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profileh1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.profileName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.profileEmail {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 16px;
+}
+
+.profileApplied,
+.profileSaved {
+  font-size: 14px;
+  color: #374151;
+  margin: 6px 0;
+}
+
+.profileTextNote {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #9CA3AF;
+  line-height: 1.5;
+}

@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import { useNavigate } from "react-router-dom";
 
+import "../Login/Login.css";
 function login() {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
@@ -44,26 +45,32 @@ function login() {
   }
 
   return (
-    <div>
-      <h2>Please Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+  <div className="loginContainer">
+    <h2 className="loginTitle">Please Login</h2>
 
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
+    <form className="loginForm" onSubmit={handleSubmit}>
+      <input
+        className="loginInput"
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <input
+        className="loginInput"
+        type="text"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <button className="loginButton" type="submit">
+        Login
+      </button>
+    </form>
+  </div>
+);
 }
 
 export default login;
