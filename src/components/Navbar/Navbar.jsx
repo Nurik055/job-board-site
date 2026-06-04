@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <nav>
-        <h1 className="navbarH1">JobBoard</h1>
+        <h1 onClick={()=> navigate("/")} className="navbarH1">JobBoard</h1>
         {user ? (
           <button className="logoutBtn" onClick={logout}>Logout</button>
         ) : (

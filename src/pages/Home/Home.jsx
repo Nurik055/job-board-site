@@ -23,7 +23,6 @@ function Home({ jobs, loading, error }) {
 
   const [selectedJob, setSelectedJob] = useState(null);
 
-  
   {
     /* sorting */
   }
