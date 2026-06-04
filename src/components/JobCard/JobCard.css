@@ -4,6 +4,12 @@
     border-radius: 8px;
     padding: 20px;
     margin: 12px;
+    transition: all 0.25s ease;
+}
+.jobCard:hover {
+  border-color: #9CA3AF;
+    background-color: #F9FAFB;
+    transform: translateY(-1px);
 }
 
 .jobLogo {
