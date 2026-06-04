@@ -88,6 +88,21 @@ function Home({ jobs, loading, error }) {
   const jobPerPage = result.slice(start, end);
   const totalPages = Math.ceil(result.length / perPage);
 
+  {
+    /* the x jobs text */
+  }
+  let textP = "";
+
+  if (search !== "") {
+    textP = `${result.length} results found`;
+  } else if (filter === "saved") {
+    textP = `${result.length} saved jobs`;
+  } else if (filter === "applied") {
+    textP = `${result.length} applied jobs`;
+  } else {
+    textP = `${jobs.length} jobs available`;
+  }
+
   return (
     <div className="container">
       <SearchBar setSearch={setSearch}></SearchBar>
@@ -96,12 +111,15 @@ function Home({ jobs, loading, error }) {
         setFilter={setFilter}
         setJobType={setJobType}
       ></Filter>
-      <p className="homeP">{jobs.length} jobs available</p>
+
+      <p className="homeP">{textP}</p>
+
       {result.length === 0 ? (
         <p>no jobs found</p>
       ) : (
         <JobList jobs={jobPerPage} setSelectedJob={setSelectedJob} />
       )}
+
       {result.length > 0 && (
         <Pagination
           currentPage={currentPage}
