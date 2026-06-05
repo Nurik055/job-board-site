@@ -14,7 +14,7 @@ function Home({ jobs, loading, error }) {
   const [jobType, setJobType] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { user } = useContext(AuthContext);
+  const { user, removeSavedJob, removeAppliedJob } = useContext(AuthContext);
   let result = [...jobs];
 
   {
@@ -103,6 +103,19 @@ function Home({ jobs, loading, error }) {
     textP = `${jobs.length} jobs available`;
   }
 
+  {
+    /* removing jobs */
+  }
+  let onRemove = () => {};
+
+  if (filter === "saved") {
+    onRemove = removeSavedJob;
+  }
+
+  if (filter === "applied") {
+    onRemove = removeAppliedJob;
+  }
+
   return (
     <div className="container">
       <SearchBar setSearch={setSearch}></SearchBar>
@@ -117,7 +130,11 @@ function Home({ jobs, loading, error }) {
       {result.length === 0 ? (
         <p>no jobs found</p>
       ) : (
-        <JobList jobs={jobPerPage} setSelectedJob={setSelectedJob} />
+        <JobList
+          jobs={jobPerPage}
+          setSelectedJob={setSelectedJob}
+          onRemove={onRemove}
+        />
       )}
 
       {result.length > 0 && (

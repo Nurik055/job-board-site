@@ -59,6 +59,32 @@ export const AuthProvider = ({ children }) => {
     });
   }
 
+  function removeSavedJob(jobId) {
+    setUser((prevUser) => {
+      const savedJobs = [...prevUser.savedJobs];
+      const result = savedJobs.filter((savedJob) => savedJob !== jobId);
+      return {
+        ...prevUser,
+        savedJobs: result,
+      };
+    });
+  }
+
+  function removeAppliedJob(jobId) {
+    setUser((prevUser) => {
+      const appliedJobs = [...prevUser.appliedJobs];
+      const result = appliedJobs.filter((appliedJob) => appliedJob !== jobId);
+      return {
+        ...prevUser,
+        appliedJobs: result,
+      };
+    });
+  }
+
+  {
+    /* i could also do the remove function as one, but with types, and then call like removeJob(job.id, "applied")  */
+  }
+
   {
     /* STORAGE  */
   }
@@ -83,7 +109,17 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, saveJob, applyToJob }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        login,
+        logout,
+        saveJob,
+        applyToJob,
+        removeSavedJob,
+        removeAppliedJob,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
