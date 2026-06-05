@@ -68,10 +68,23 @@
   margin-top: 5px;
 }
 
+.buttonRemove {
+  background: #f93f3f;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
 .buttonApply:hover {
   background: #1d4ed8;
 }
 
 .buttonSave:hover {
   background: #f9fafb;
+}
+.buttonRemove:hover {
+  background: #f91818;
 }

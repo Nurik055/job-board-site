@@ -69,7 +69,7 @@ function Home({ jobs, loading, error }) {
   }
 
   if (loading) {
-    return <p>Loading jobs...</p>;
+    return <p className="loadJobsP">Loading jobs...</p>;
   }
 
   {
@@ -128,12 +128,13 @@ function Home({ jobs, loading, error }) {
       <p className="homeP">{textP}</p>
 
       {result.length === 0 ? (
-        <p>no jobs found</p>
+        <p className="noJobsFound">no jobs found</p>
       ) : (
         <JobList
           jobs={jobPerPage}
           setSelectedJob={setSelectedJob}
           onRemove={onRemove}
+           filter={filter}
         />
       )}
 

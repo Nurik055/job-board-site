@@ -20,13 +20,14 @@ button {
   padding: 20px;
 }
 
-.homeP {
-    font-size: 18px;
-    font-weight: bold;
-    color: #374151;
 
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    text-align: center;
+.homeP,
+.loadJobsP,
+.noJobsFound {
+  font-size: 18px;
+  font-weight: bold;
+  color: #374151;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }

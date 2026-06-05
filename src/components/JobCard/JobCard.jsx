@@ -3,11 +3,10 @@ import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import { MapPin, Briefcase } from "lucide-react";
 
-function JobCard({ job, setSelectedJob, onRemove }) {
+function JobCard({ job, setSelectedJob, onRemove, filter }) {
   const { saveJob, applyToJob } = useContext(AuthContext);
 
   return (
-    
     <div className="jobCard" onClick={() => setSelectedJob(job)}>
       <img className="jobLogo" src={job.logo} alt={job.company} />
       <h1 className="h1Title">{job.title}</h1>
@@ -16,7 +15,7 @@ function JobCard({ job, setSelectedJob, onRemove }) {
         <Briefcase size={16}></Briefcase>
         {job.company}
       </p>
-      
+
       <p className="pLocation">
         <MapPin size={16}></MapPin>
         {job.location}
@@ -42,15 +41,17 @@ function JobCard({ job, setSelectedJob, onRemove }) {
         Apply
       </button>
 
-      <button
-        className="buttonRemove"
-        onClick={(e) => {
-          e.stopPropagation();
-          onRemove(job.id);
-        }}
-      >
-        Remove
-      </button>
+      {(filter === "saved" || filter === "applied") && (
+        <button
+          className="buttonRemove"
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemove(job.id);
+          }}
+        >
+          Remove
+        </button>
+      )}
     </div>
   );
 }
