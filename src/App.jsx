@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/ProtectRoutes";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
+import CompanyPage from "./companyPage/CompanyPage"
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -95,6 +96,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+          <Route path="companypage/:companyName" element={<CompanyPage />}></Route>
           </Route>
         </Routes>
       </AuthProvider>
