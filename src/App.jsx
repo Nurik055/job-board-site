@@ -96,7 +96,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-          <Route path="companypage/:companyName" element={<CompanyPage />}></Route>
+          <Route path="companypage/:companyName" element={<CompanyPage jobs={jobs}/>}></Route>
           </Route>
         </Routes>
       </AuthProvider>
