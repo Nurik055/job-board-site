@@ -15,6 +15,11 @@
 .jobLogo {
   width: 40px;
   object-fit: contain; 
+  cursor: pointer;
+}
+.jobLogo:hover {
+  border-color: #9CA3AF;
+    transform: translateY(-1px);
 }
 
 

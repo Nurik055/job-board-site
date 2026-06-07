@@ -10,13 +10,17 @@ import ProtectedRoute from "./components/ProtectRoutes";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
-import CompanyPage from "./companyPage/CompanyPage"
+import CompanyPage from "./companyPage/CompanyPage";
 
 function App() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+  {
+    /* big job card */
+  }
+
+  const [selectedJob, setSelectedJob] = useState(null);
 
   useEffect(() => {
     fetch("https://remotive.com/api/remote-jobs")
@@ -24,7 +28,6 @@ function App() {
 
       .then((data) => {
         const formatted = data.jobs.map((job) => {
-          
           const parts = (job.salary || "").split("-");
           const min = parts[0] || "";
           const max = parts[1] || "";
@@ -34,7 +37,6 @@ function App() {
           const convertedMax = parseInt(clearedMax) || 0;
 
           return {
-            
             id: job.id,
 
             title: job.title,
@@ -58,18 +60,13 @@ function App() {
             jobType: job.job_type,
 
             logo: job.company_logo,
-
-            
           };
-          
         });
-        
 
-        
         setJobs(formatted);
         setLoading(false);
-        })
-        .catch(() => {
+      })
+      .catch(() => {
         setError("Failed to load jobs");
         setLoading(false);
       });
@@ -84,7 +81,13 @@ function App() {
             <Route
               index
               element={
-                <Home jobs={jobs} loading={loading} error={error}></Home>
+                <Home
+                  jobs={jobs}
+                  loading={loading}
+                  error={error}
+                  selectedJob={selectedJob}
+                  setSelectedJob={setSelectedJob}
+                />
               }
             ></Route>
             <Route path="login" element={<Login />} />
@@ -96,7 +99,12 @@ function App() {
                 </ProtectedRoute>
               }
             />
-          <Route path="companypage/:companyName" element={<CompanyPage jobs={jobs}/>}></Route>
+            <Route
+              path="companypage/:companyName"
+              element={
+                <CompanyPage jobs={jobs} setSelectedJob={setSelectedJob} />
+              }
+            ></Route>
           </Route>
         </Routes>
       </AuthProvider>

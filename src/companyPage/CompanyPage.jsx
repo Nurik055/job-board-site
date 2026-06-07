@@ -1,14 +1,17 @@
 import "../companyPage/CompanyPage.css";
 import { useParams } from "react-router-dom";
-
-function CompanyPage({jobs}) {
+import JobCard from "../../src/components/JobCard/JobCard";
+function CompanyPage({ jobs, setSelectedJob }) {
   const { companyName } = useParams();
 
-  const result = jobs.filter((job)=>job.company === companyName)
+  const results = jobs.filter((job) => job.company === companyName);
+
   return (
     <div>
-      <h1>{companyName}</h1>
-      result
+      <h1 className="companyName">{companyName}</h1>
+      {results.map((result) => (
+        <JobCard key={result.id} job={result} setSelectedJob={setSelectedJob} />
+      ))}
     </div>
   );
 }

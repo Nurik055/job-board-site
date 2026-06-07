@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/AuthContext";
 import "../../../styles/global.css";
 import BigCard from "../../components/BigCard/BigCard";
 
-function Home({ jobs, loading, error }) {
+function Home({ jobs, loading, error, selectedJob, setSelectedJob }) {
   const [sortBy, setSortBy] = useState("");
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
@@ -17,11 +17,7 @@ function Home({ jobs, loading, error }) {
   const { user, removeSavedJob, removeAppliedJob } = useContext(AuthContext);
   let result = [...jobs];
 
-  {
-    /* big job card */
-  }
-
-  const [selectedJob, setSelectedJob] = useState(null);
+ 
 
   {
     /* sorting */
