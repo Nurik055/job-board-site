@@ -7,18 +7,21 @@ import { useNavigate } from "react-router-dom";
 function JobCard({ job, setSelectedJob, onRemove, filter }) {
   const { saveJob, applyToJob } = useContext(AuthContext);
   const navigate = useNavigate();
-  
+
   return (
     <div className="jobCard" onClick={() => setSelectedJob(job)}>
       <img
         className="jobLogo"
         src={job.logo}
         alt={job.company}
-        onClick={() => navigate("/companypage/" + job.company)}
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate("/companypage/" + job.company);
+        }}
       />
       <h1 className="h1Title">{job.title}</h1>
       <h2 className="h2Salary">{job.salaryRaw}</h2>
-      <p className="pCompany" > 
+      <p className="pCompany">
         <Briefcase size={16}></Briefcase>
         {job.company}
       </p>

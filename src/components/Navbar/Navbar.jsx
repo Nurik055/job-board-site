@@ -3,6 +3,8 @@ import "./Navbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png";
+
 
 function Navbar() {
   const navigate = useNavigate();
@@ -11,9 +13,17 @@ function Navbar() {
   return (
     <div className="navbar">
       <nav>
-        <h1 onClick={() => navigate("/")} className="navbarH1">
-          JobBoard
-        </h1>
+        <div className="leftSide">
+          <img
+          src={logo}
+          alt="JobBoard"
+          className="navbarLogo"
+          onClick={() => navigate("/")}
+        />
+        <Link className="profileLink" to="/profile">
+        Profile
+      </Link>
+        </div>
         {user ? (
           <button className="logoutBtn" onClick={logout}>
             Logout
@@ -25,9 +35,7 @@ function Navbar() {
         )}
         {/* condition ? valueIfTrue : valueIfFalse */}
       </nav>
-      <Link className="profileLink" to="/profile">
-        Profile
-      </Link>
+      
     </div>
   );
 }

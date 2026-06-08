@@ -10,20 +10,23 @@
   align-items: center;
 }
 
-.navbarH1 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #111827;
-  margin: 0;
+.navbarLogo {
+  width: 100px;
   cursor: pointer;
+}
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 }
 
 .profileLink {
   display: inline-block;
-  margin-top: 12px;
   text-decoration: none;
   color: #2563EB;
   font-weight: 500;
+  padding-left: 10px;
 }
 
 .profileLink:hover {
