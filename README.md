@@ -1,16 +1,37 @@
-# React + Vite
+# Job Board App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based job board application where users can browse job listings, filter them, and view job details.
 
-Currently, two official plugins are available:
+The goal of this project was to simulate a real job search experience while practicing frontend development skills.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- View a list of job postings  
+- Filter jobs by category/location (if implemented)  
+- View detailed job information  
+- Simple, clean UI for browsing jobs  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Built With
 
-## Expanding the ESLint configuration
+React, JavaScript (ES6+), CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Why I Built This
+
+I built this project to practice working with dynamic data and UI rendering in React, and to get closer to real-world frontend development scenarios.
+
+## What I Learned
+
+- Rendering lists with `map`  
+- Component structure and reuse  
+- Passing props between components  
+- Basic state management with `useState`  
+- Conditional rendering  
+- Organizing a multi-component project
+
+## Setup
+
+bash
+git clone <repository-url>
+cd job-board-app
+npm install
+npm run dev
